@@ -14,6 +14,8 @@ spec:
         value: mimir
       - name: MINIO_SECRET_KEY
         value: supersecret
+    ports:
+      - containerPort: 9000
     resources:
       limits:
         memory: "128Mi"

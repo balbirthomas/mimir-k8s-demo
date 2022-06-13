@@ -25,7 +25,9 @@ spec:
             cpu: "200m"
         ports:
         - containerPort: 9009
-          name: mimir-dashboard
+          name: mimir-api
+        - containerPort: 8080
+          name: mimir-metrics
         volumeMounts:
           - name: mimir-config
             mountPath: /etc/mimir

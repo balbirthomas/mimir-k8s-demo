@@ -11,14 +11,14 @@ run:
 	kubectl apply -f minio.yaml
 	kubectl apply -f mimir-volumes.yaml
 	kubectl apply -f mimir.yaml
-	kubectl apply -f nginx.yaml
+	kubectl apply -f mimir-service.yaml
 	kubectl apply -f prometheus.yaml
 	kubectl apply -f grafana.yaml
 clean:
 	-kubectl delete -f grafana.yaml > /dev/null || true
 	-kubectl delete -f prometheus.yaml > /dev/null || true
-	-kubectl delete -f nginx.yaml > /dev/null || true
 	-kubectl scale statefulset mimir --replicas=0 > /dev/null || true
+	-kubectl delete -f mimir-service.yaml > /dev/null || true
 	-kubectl delete -f mimir.yaml > /dev/null || true
 	-kubectl	delete pvc mimir-config-mimir-0 > /dev/null || true
 	-kubectl	delete pvc mimir-config-mimir-1 > /dev/null || true
