@@ -1,13 +1,14 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: StatefulSet
 metadata:
-  name: mimir-replicas
+  name: mimir
   namespace: cos
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: mimir
+  serviceName: mimir
+  replicas: 1
   template:
     metadata:
       labels:
@@ -23,12 +24,20 @@ spec:
             memory: "128Mi"
             cpu: "200m"
         ports:
-          - containerPort: 9009
+        - containerPort: 9009
+          name: mimir-dashboard
         volumeMounts:
-          - mountPath: /etc/mimir
-            name: mimir-config
-      volumes:
-      - name: mimir-config
-        hostPath:
-          path: /mimir/config/mimir
-          type: Directory
+          - name: mimir-config
+            mountPath: /etc/mimir
+  volumeClaimTemplates:
+  - metadata:
+      name: mimir-config
+    spec:
+      storageClassName: local-storage
+      accessModes: [ "ReadOnlyMany" ]
+      resources:
+        requests:
+          storage: 100M
+      selector:
+        matchLabels:
+          type: mimir-config

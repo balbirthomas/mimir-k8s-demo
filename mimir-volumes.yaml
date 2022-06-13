@@ -1,0 +1,50 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mimir-config-0
+  labels:
+    type: mimir-config
+spec:
+  capacity:
+    storage: 100M
+  volumeMode: Filesystem
+  accessModes:
+    - "ReadOnlyMany"
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: /mimir/config/mimir
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mimir-config-1
+  labels:
+    type: mimir-config
+spec:
+  capacity:
+    storage: 100M
+  volumeMode: Filesystem
+  accessModes:
+    - "ReadOnlyMany"
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: /mimir/config/mimir
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: mimir-config-2
+  labels:
+    type: mimir-config
+spec:
+  capacity:
+    storage: 100M
+  volumeMode: Filesystem
+  accessModes:
+    - "ReadOnlyMany"
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  hostPath:
+    path: /mimir/config/mimir
