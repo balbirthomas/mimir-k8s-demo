@@ -14,7 +14,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   hostPath:
-    path: /mimir/config/mimir
+    path: /home/balbir/tmp/mimir/k8s/config/mimir
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -32,7 +32,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   hostPath:
-    path: /mimir/config/mimir
+    path: /home/balbir/tmp/mimir/k8s/config/mimir
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -50,4 +50,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   hostPath:
-    path: /mimir/config/mimir
+    path: /home/balbir/tmp/mimir/k8s/config/mimir

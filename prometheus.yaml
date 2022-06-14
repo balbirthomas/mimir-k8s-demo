@@ -30,5 +30,5 @@ spec:
   volumes:
   - name: prometheus-config
     hostPath:
-      path: /mimir/config/prometheus
+      path: /home/balbir/tmp/mimir/k8s/config/prometheus
       type: Directory

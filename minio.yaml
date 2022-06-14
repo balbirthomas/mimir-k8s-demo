@@ -30,5 +30,5 @@ spec:
   volumes:
   - name: minio-data
     hostPath:
-      path: /mimir/data
+      path: /home/balbir/tmp/mimir/k8s/data
       type: Directory

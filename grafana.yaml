@@ -34,13 +34,13 @@ spec:
   volumes:
   - name: grafana-provisioning-datasources
     hostPath:
-      path: /mimir/config/grafana/provisioning/datasources
+      path: /home/balbir/tmp/mimir/k8s/config/grafana/provisioning/datasources
       type: Directory
   - name: grafana-provisioning-dashboards
     hostPath:
-      path: /mimir/config/grafana/provisioning/dashboards
+      path: /home/balbir/tmp/mimir/k8s/config/grafana/provisioning/dashboards
       type: Directory
   - name: grafana-dashboards
     hostPath:
-      path: /mimir/dashboards
+      path: /home/balbir/tmp/mimir/k8s/dashboards
       type: Directory
