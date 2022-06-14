@@ -52,3 +52,4 @@ alertmanager_storage:
 
 server:
   log_level: warn
+  http_listen_port: 9009
