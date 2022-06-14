@@ -3,7 +3,11 @@ kind: Pod
 metadata:
   name: minio
   namespace: cos
+  labels:
+    member: mimir-cluster
 spec:
+  hostname: minio
+  subdomain: mimir-cluster
   containers:
   - name: minio
     image: minio/minio

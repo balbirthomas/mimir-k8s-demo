@@ -3,7 +3,11 @@ kind: Pod
 metadata:
   name: prometheus
   namespace: cos
+  labels:
+    member: mimir-cluster
 spec:
+  hostname: prometheus
+  subdomain: mimir-cluster
   containers:
   - name: prometheus
     image: prom/prometheus

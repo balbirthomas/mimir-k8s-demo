@@ -7,7 +7,7 @@ target: all,alertmanager,overrides-exporter
 blocks_storage:
   backend: s3
   s3:
-    endpoint: minio:9000
+    endpoint: minio.mimir-cluster.cos.svc.cluster.local:9000
     bucket_name: mimir-blocks
     access_key_id: mimir
     secret_access_key: supersecret
@@ -17,11 +17,11 @@ blocks_storage:
 
 # Use memberlist, a gossip-based protocol, to enable the 3 Mimir replicas to communicate 
 memberlist:
-  join_members: [ mimir-0, mimir-1 ]
+  join_members: [ mimir-0.mimir-service.cos.svc.cluster.local, mimir-1.mimir-service.cos.svc.cluster.local ]
 
 ruler:
   rule_path: /data/ruler
-  alertmanager_url: http://127.0.0.1:8080/alertmanager
+  alertmanager_url: http://127.0.0.1:9009/alertmanager
   ring:
     # Quickly detect unhealthy rulers to speed up the tutorial.
     heartbeat_period: 2s
@@ -30,7 +30,7 @@ ruler:
 ruler_storage:
   backend: s3
   s3:
-    endpoint: minio:9000
+    endpoint: minio.mimir-cluster.cos.svc.cluster.local:9000
     bucket_name: mimir-ruler
     access_key_id: mimir
     secret_access_key: supersecret
@@ -44,7 +44,7 @@ alertmanager:
 alertmanager_storage:
   backend: s3
   s3:
-    endpoint: minio:9000
+    endpoint: minio.mimir-cluster.cos.svc.cluster.local:9000
     bucket_name: mimir-alertmanager
     access_key_id: mimir
     secret_access_key: supersecret

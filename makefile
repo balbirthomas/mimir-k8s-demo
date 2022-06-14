@@ -4,7 +4,7 @@ mounts:
 dirs:
 	mkdir -p /data
 
-run:
+run: dirs
 	kubectl create namespace cos && \
 	kubectl config set-context --current --namespace=cos
 	kubectl apply -f local-storage.yaml
@@ -14,6 +14,8 @@ run:
 	kubectl apply -f mimir-service.yaml
 	kubectl apply -f prometheus.yaml
 	kubectl apply -f grafana.yaml
+	kubectl apply -f service.yaml
+
 clean:
 	-kubectl delete -f grafana.yaml > /dev/null || true
 	-kubectl delete -f prometheus.yaml > /dev/null || true
@@ -29,13 +31,14 @@ clean:
 	-kubectl delete -f mimir-volumes.yaml > /dev/null || true
 	-kubectl delete -f local-storage.yaml > /dev/null || true
 	-kubectl delete -f minio.yaml > /dev/null || true
+	-kubectl delete -f service.yaml > /dev/null || true
 	-kubectl delete namespace cos > /dev/null || true
 	kubectl config set-context --current --namespace=default
 
 dataclean:
-	rm -rf data/*
-	rm -rf data/.minio.sys
-	rm -rf data/.writable*
+	sudo rm -rf data/*
+	sudo rm -rf data/.minio.sys
+	sudo rm -rf data/.writable*
 
 distclean: clean dataclean
 

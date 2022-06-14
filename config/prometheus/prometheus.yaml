@@ -10,15 +10,15 @@ rule_files:
 scrape_configs:
   - job_name: demo/mimir
     static_configs:
-      - targets: [ 'mimir-0:8080' ]
+      - targets: [ 'mimir-0.mimir-service.cos.svc.cluster.local:8080' ]
         labels:
           pod: 'mimir-0'
-      - targets: [ 'mimir-1:8080' ]
+      - targets: [ 'mimir-1.mimir-service.cos.svc.cluster.local:8080' ]
         labels:
           pod: 'mimir-1'
 
 remote_write:
-  - url: http://load-balancer:9009/api/v1/push
+  - url: http://mimir:9009/api/v1/push
 # Add X-Scope-OrgID header so that Mimir knows what tenant the remote write data should be stored in.
 # In this case, our tenant is "demo"
     headers:

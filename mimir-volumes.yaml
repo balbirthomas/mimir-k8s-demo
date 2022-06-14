@@ -2,6 +2,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: mimir-config-0
+  namespace: cos
   labels:
     type: mimir-config
 spec:
@@ -19,6 +20,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: mimir-config-1
+  namespace: cos
   labels:
     type: mimir-config
 spec:
@@ -36,6 +38,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: mimir-config-2
+  namespace: cos
   labels:
     type: mimir-config
 spec:

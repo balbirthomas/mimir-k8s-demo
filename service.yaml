@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mimir-cluster
+  namespace: cos
+spec:
+  selector:
+    member: mimir-cluster
+  clusterIP: None
