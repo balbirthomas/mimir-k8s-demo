@@ -2,7 +2,10 @@ mounts:
 	minikube mount $(shell pwd):/mimir
 
 dirs:
-	mkdir -p /data
+	mkdir -p $(shell pwd)/data
+	mkdir -p $(shell pwd)/data/mimir-blocks
+	mkdir -p $(shell pwd)/data/mimir-ruler
+	mkdir -p $(shell pwd)/data/mimir-alertmanager
 
 run: dirs
 	kubectl create namespace cos && \
@@ -39,6 +42,7 @@ dataclean:
 	sudo rm -rf data/*
 	sudo rm -rf data/.minio.sys
 	sudo rm -rf data/.writable*
+	sudo rm -f config/grafana/provisioning/datasources/.grafana-provisioning-datasources.yaml.swp
 
 distclean: clean dataclean
 
