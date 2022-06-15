@@ -10,10 +10,10 @@ rule_files:
 scrape_configs:
   - job_name: demo/mimir
     static_configs:
-      - targets: [ 'mimir-0.mimir-service.cos.svc.cluster.local:8080' ]
+      - targets: [ 'mimir-0.mimir-service.cos.svc.cluster.local:9009' ]
         labels:
           pod: 'mimir-0'
-      - targets: [ 'mimir-1.mimir-service.cos.svc.cluster.local:8080' ]
+      - targets: [ 'mimir-1.mimir-service.cos.svc.cluster.local:9009' ]
         labels:
           pod: 'mimir-1'
 
